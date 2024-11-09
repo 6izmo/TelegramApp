@@ -25,7 +25,7 @@
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var warningBanner = document.querySelector("#unity-warning");
-
+      
       function unityShowBanner(msg, type) {
         function updateBannerVisibility() {
           warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
@@ -58,6 +58,7 @@
       };
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        
         var meta = document.createElement('meta');
         meta.name = 'viewport';
         meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
@@ -76,30 +77,14 @@
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
-        }).then((unityInstance) => {
-          loadingBar.style.display = "none";
-        }).catch((message) => {
-          alert(message);
-        });
-      };
+              }).then((unityInstance) => {
+                loadingBar.style.display = "none";
+              }).catch((message) => {
+                alert(message);
+              });
+            };
 
       document.body.appendChild(script);
-
-      // Telegram Web API Integration
-      mergeInto(LibraryManager.library, {
-        GetTelegramUserID: function () {
-          if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe) {
-            return window.Telegram.WebApp.initDataUnsafe.user.id;
-          }
-          return 0;  // Return 0 if SDK is unavailable or ID is not found
-        },
-        GetTelegramUserName: function () {
-          if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe) {
-            return allocate(intArrayFromString(window.Telegram.WebApp.initDataUnsafe.user.username), 'i8', ALLOC_STACK);
-          }
-          return allocate(intArrayFromString("unknown"), 'i8', ALLOC_STACK);
-        }
-      });
 
     </script>
   </body>
