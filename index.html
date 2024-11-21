@@ -11,77 +11,76 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
    <style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* Убираем прокрутку */
-    width: 100%;
-    height: 100%;
-  }
+      html, body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+      }
 
-  #unity-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black; /* Фон экрана загрузки */
-  }
+      #unity-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: black; /* Задний фон игры */
+      }
 
-  #unity-canvas {
-    max-width: 100%;
-    max-height: 100%;
-    aspect-ratio: 1080 / 2310; /* Соотношение сторон игры */
-  }
+      #unity-canvas {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        aspect-ratio: 1080 / 2310; /* Соотношение сторон игры */
+      }
 
-  #unity-loading-bar {
-    position: absolute;
-    top: 50%; /* Центрируем по вертикали */
-    left: 50%; /* Центрируем по горизонтали */
-    transform: translate(-50%, -50%); /* Центрирование */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Центрируем логотип и полоску */
-    justify-content: center;
-    width: 300px; /* Ширина блока с загрузкой */
-    gap: 20px; /* Отступ между логотипом и полоской */
-  }
+      #unity-loading-bar {
+        position: absolute;
+        bottom: 10%; /* Отступ снизу */
+        width: 50%; /* Ширина загрузочного блока */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px; /* Отступ между логотипом и прогресс-баром */
+      }
 
-  #unity-logo {
-    width: 150px; /* Уменьшенный размер логотипа */
-    height: auto;
-    background: url('TemplateData/unity-logo-dark.png') no-repeat center center;
-    background-size: contain;
-  }
+      #unity-logo {
+        width: 200px; /* Логотип фиксированного размера */
+        height: auto;
+        background: url('TemplateData/unity-logo-dark.png') no-repeat center center;
+        background-size: contain;
+      }
 
-  #unity-progress-bar-empty {
-    width: 100%; /* Задаём ширину прогресс-бара */
-    height: 10px;
-    background-color: #444; /* Серый цвет для фона полоски */
-    border-radius: 5px;
-    overflow: hidden;
-    position: relative;
-  }
+      #unity-progress-bar-empty {
+        width: 100%; /* Ширина полосы прогресса */
+        height: 10px;
+        background-color: #444; /* Фон пустой полосы */
+        border-radius: 5px;
+        overflow: hidden;
+        position: relative;
+      }
 
-  #unity-progress-bar-full {
-    width: 0%;
-    height: 100%;
-    background-color: #09f; /* Синий цвет полоски */
-    transition: width 0.3s ease-in-out; /* Анимация заполнения */
-  }
+      #unity-progress-bar-full {
+        width: 0%;
+        height: 100%;
+        background-color: #09f; /* Синий цвет прогресса */
+        transition: width 0.3s ease-in-out;
+      }
 
-  #unity-warning {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    text-align: center;
-    color: white;
-  }
-</style>
+      #unity-warning {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        color: white;
+      }
+    </style>
   </head>
   <body>
     <div id="unity-container">
