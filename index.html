@@ -41,10 +41,17 @@
       #unity-loading-bar {
         position: absolute;
         bottom: 10%; /* Отступ снизу */
-        width: 50%; /* Ширина загрузочного блока */
+        left: 50%; /* Центрируем по горизонтали */
+        transform: translateX(-50%); /* Сдвигаем влево на 50% ширины */
+        width: auto; /* Автоматическая ширина */
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: center; /* Центрируем содержимое по горизонтали */
+      }
+
+      #unity-logo {
+        max-width: 100%; /* Логотип не будет выходить за границы контейнера */
+        height: auto;
       }
 
       #unity-warning {
