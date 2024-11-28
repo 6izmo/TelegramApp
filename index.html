@@ -137,15 +137,6 @@
 
       document.body.appendChild(script);
 
-      // Telegram Web API Integration
-      mergeInto(LibraryManager.library, {
-        GetTelegramUserID: function () {
-          if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe) {
-            return window.Telegram.WebApp.initDataUnsafe.user.id;
-          }
-          return -1; // Return -1 if SDK is unavailable or ID is not found
-        },
-      });
     </script>
   </body>
 </html>
